@@ -3,3 +3,7 @@
 use warnings;
 use strict;
 
+my $filename="fasta.file";
+open FASTA,$filename or die "$filename $!";
+
+close FASTA;
