@@ -1,0 +1,25 @@
+$files = {
+           '_<fastaparser.pl' => [
+                                   {
+                                     'expr' => undef,
+                                     'value' => '1',
+                                     'text' => 'while (<FASTA>) 
+',
+                                     'fname' => 'fastaparser.pl',
+                                     'type' => 'user',
+                                     'line' => 10
+                                   }
+                                 ]
+         };
+$expr_list = [
+               {
+                 'expr' => '%sequence',
+                 'depth' => -1
+               },
+               {
+                 'expr' => '$_',
+                 'depth' => -1
+               }
+             ];
+$eval_saved_text = undef;
+$main_win_geometry = '800x600+474+269';
