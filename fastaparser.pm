@@ -30,7 +30,6 @@ sub parser
 	else
 	{
 	    $seq = $seq.$_;
-	    #print("$seq");
 	}
 	$seqs{"id".$n} = "$id";
 	$seqs{"seq".$n} = "$seq";
