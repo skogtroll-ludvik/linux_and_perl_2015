@@ -15,6 +15,7 @@ sub parser
 
     while(<FILE>)
     {
+	chomp $_;
 	if ($_ =~ /^>ID\s(\w+)/)
 	{
 	    if ($seq)
