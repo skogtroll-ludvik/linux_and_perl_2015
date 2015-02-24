@@ -11,7 +11,7 @@ sub parser
     my $id;
     my $n = 0;
 
-	open(FILE, "$filename") or die "couldn't! $!";
+    open(FILE, "$filename") or die "couldn't open! $!";
 
     while(<FILE>)
     {
@@ -28,12 +28,13 @@ sub parser
 	}
 	else
 	{
-	    $seq = join('', $seq, $_);
+	    $seq = $seq.$_;
 	    #print("$seq");
 	}
 	$seqs{"id".$n} = "$id";
 	$seqs{"seq".$n} = "$seq";
     }
+    close FILE or die "couldn't close! $!";
     return %seqs;
 }
 1;
