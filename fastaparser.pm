@@ -34,9 +34,6 @@ sub parser
 	$seqs{"id".$n} = "$id";
 	$seqs{"seq".$n} = "$seq";
     }
-    
-    print Dumper(%seqs);
-    print("\n$seqs{seq2}");
-
+    return %seqs;
 }
 1;
