@@ -10,6 +10,7 @@ sub parse_fasta_file
     open FASTA, $file or die "$file $!";
     while (<FASTA>)
     {
+	chomp($_);
 
 	if ($_=~/^>(\S+)\s*(.*)/)
 	{
