@@ -3,21 +3,33 @@
 use warnings;
 use strict;
 
-my %sequence=();
-my $key="";
-
 my $filename="fasta.file";
-open FASTA,$filename or die "$filename $!";
-while (<FASTA>) 
+
+my %sequences = parse_fasta_file($filename);
+
+print Dumper(\%sequences); use Data::Dumper;
+
+sub parse_fasta_file
 {
-    if ($_=~/^>/) 
+    my ($file) = @_;
+
+    my %seqs = ();
+    my $key = "";
+
+    open FASTA, $file or die "$file $!";
+    while (<FASTA>)
     {
-	$sequence{"$_"}="";
-	$key=$_;
+	if ($_=~/^>/)
+	{
+	    $seqs{"$_"}="";
+	    $key=$_;
+	}
+	else
+	{
+	    $seqs{$key}=$seqs{$key}.$_;
+	}
     }
-    else 
-    {
-	$sequence{$key}=$sequence{$key}.$_;
-    }
+    close FASTA or die "$file $!";
+
+    return %seqs;
 }
-close FASTA;
