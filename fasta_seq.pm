@@ -9,4 +9,9 @@ sub new
     return $self;
 }
 
+sub ID
+{
+
+}
+
 1;
