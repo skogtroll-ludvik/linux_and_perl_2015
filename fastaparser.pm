@@ -15,7 +15,12 @@ sub parse_fasta_file
 	if ($_=~/^>(\S+)\s*(.*)/)
 	{
 	    $key = $1;
-	    $seqs{$key}={id => $key, desc => $2, seq => ""};
+	    my $desc = "";
+	    if (defined $2)
+	    {
+		$desc = $2;
+	    }
+	    $seqs{$key}={id => $key, desc => $desc, seq => ""};
 	}
 	else
 	{
