@@ -6,7 +6,7 @@ use Data::Dumper;
 sub parser
 {
     my $filename = $_[0];
-    my %seqs;
+    my %seqs = ();
     my $seq;
     my $id;
     my $n = 0;
@@ -20,8 +20,8 @@ sub parser
 	{
 	    if ($seq)
 	    {
-		$seqs{"id".$n} = "$id";
-		$seqs{"seq".$n} = "$seq";
+		$seqs{"id".$n} = $id;
+		$seqs{"seq".$n} = $seq;
 	    }
 	    $id = $1;
 	    $seq = "";
