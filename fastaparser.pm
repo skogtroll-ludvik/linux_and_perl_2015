@@ -32,6 +32,4 @@ sub parse_fasta_file
 
     return %seqs;
 }
-
->>>>>>> d13b38e4533ed2ff3d29753c2ad87d17d19b9c55
 1;
