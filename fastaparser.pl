@@ -7,8 +7,6 @@ my $filename="fasta.file";
 
 my %sequences = parse_fasta_file($filename);
 
-print Dumper(\%sequences); use Data::Dumper;
-
 sub parse_fasta_file
 {
     my ($file) = @_;
