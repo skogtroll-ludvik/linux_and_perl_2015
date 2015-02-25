@@ -10,14 +10,15 @@ sub parse_fasta_file
     open FASTA, $file or die "$file $!";
     while (<FASTA>)
     {
-	if ($_=~/^>/)
+
+	if ($_=~/^>(\S+)\s*(.*)/)
 	{
-	    $seqs{"$_"}="";
-	    $key=$_;
+	    $key = $1;
+	    $seqs{$key}={id => $key, desc => $2, seq => ""};
 	}
 	else
 	{
-	    $seqs{$key}=$seqs{$key}.$_;
+	    $seqs{$key}{seq}=$seqs{$key}{seq}.$_;
 	}
     }
     close FASTA or die "$file $!";
