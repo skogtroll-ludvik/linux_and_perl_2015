@@ -4,14 +4,17 @@ use warnings;
 
 sub new
 {
-    my $self={};
-    bless $self,"fasta_seq";
+    my $class=shift;
+    my $self={ID=>$_[0]};
+    bless $self,$class;
     return $self;
 }
 
 sub ID
 {
-    return "ralph";
+    my $self=shift;
+    $self->{ID}=shift if defined $_[0];
+    return $self->{ID};
 }
 
 1;
