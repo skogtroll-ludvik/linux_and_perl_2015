@@ -3,22 +3,12 @@
 use warnings;
 use strict;
 
-my %sequence=();
-my $key="";
+
+
+use fastaparser;
 
 my $filename="fasta.file";
-open FASTA,$filename or die "filename $!";
-while (<FASTA>)
-{
-    if ($_=~/^>/)
-    {
-	$sequence{"$_"}="";
-	$key=$_;
-    }
-    print ($_)
-    else 
-{
-    $sequence{$key}=$sequence{$key}$_.
-}
 
-close FASTA
+my %sequences = fastaparser::parse_fasta_file($filename);
+
+
