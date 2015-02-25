@@ -11,7 +11,7 @@ sub new
 
 sub ID
 {
-
+    return "ralph";
 }
 
 1;
