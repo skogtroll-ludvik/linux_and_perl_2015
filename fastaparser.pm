@@ -1,40 +1,37 @@
 package fastaparser;
-use strict;
-use warnings;
-use Data::Dumper;
 
-sub parser
+
+sub parse_fasta_file
 {
-    my $filename = $_[0];
+    my ($file) = @_;
+
     my %seqs = ();
-    my $seq;
-    my $id;
-    my $n = 0;
+    my $key = "";
 
-    open(FILE, "$filename") or die "couldn't open! $!";
-
-    while(<FILE>)
+    open FASTA, $file or die "$file $!";
+    while (<FASTA>)
     {
-	chomp $_;
-	if ($_ =~ /^>ID\s(\w+)/)
+	chomp($_);
+
+	if ($_=~/^>(\S+)\s*(.*)/)
 	{
-	    if ($seq)
+	    $key = $1;
+	    my $desc = "";
+	    if (defined $2)
 	    {
-		$seqs{"id".$n} = $id;
-		$seqs{"seq".$n} = $seq;
+		$desc = $2;
 	    }
-	    $id = $1;
-	    $seq = "";
-	    $n++;
+	    $seqs{$key}={id => $key, desc => $desc, seq => ""};
 	}
 	else
 	{
-	    $seq = $seq.$_;
+	    $seqs{$key}{seq}=$seqs{$key}{seq}.$_;
 	}
-	$seqs{"id".$n} = "$id";
-	$seqs{"seq".$n} = "$seq";
     }
-    close FILE or die "couldn't close! $!";
+    close FASTA or die "$file $!";
+
     return %seqs;
 }
+
+>>>>>>> d13b38e4533ed2ff3d29753c2ad87d17d19b9c55
 1;

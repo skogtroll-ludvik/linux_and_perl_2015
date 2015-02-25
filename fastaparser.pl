@@ -1,8 +1,10 @@
-use strict;
+#!/usr/bin/perl
+
 use warnings;
+use strict;
+
 use fastaparser;
-use Data::Dumper;
 
-my %seqs = fastaparser::parser("file.fasta");
+my $filename="fasta.file";
 
-print Dumper(%seqs);
+my %sequences = fastaparser::parse_fasta_file($filename);
