@@ -6,6 +6,7 @@ sub new
 {
     my $class=shift;
     my %param=@_;
+    die "You'll have to provide ID and sequence for a fasta_seq object" unless (exists $param{ID} and exists $param{seq});
     my $self={ID=>$param{ID},species=>$param{species},
 	      seq=>$param{seq},desc=>$param{desc}};
     bless $self,$class;

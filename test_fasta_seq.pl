@@ -8,7 +8,7 @@ require_ok("fasta_seq");
 
 my $ralph=new_ok("fasta_seq",[ID=>"ralph",seq=> "ralph2"]);
 my $hubert=new_ok("fasta_seq",[ID=>"ralph",seq=>"ralph2",desc=>"ralph3"]);
-my $norbert=new_ok("fasta_seq",[ID=>"norbert",species=>"robot"]);
+my $norbert=new_ok("fasta_seq",[ID=>"norbert",species=>"robot",seq=>"ralph2"]);
 
 #ID-Stuff
 
