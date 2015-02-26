@@ -18,6 +18,7 @@ is($ralph->ID,"willi","set_ID");
 
 can_ok("fasta_seq","seq");
 is($ralph->seq,"ralph","get_seq");
-
+$ralph->seq("willi");
+is($ralph->seq,"willi","set_seq");
 
 done_testing();
