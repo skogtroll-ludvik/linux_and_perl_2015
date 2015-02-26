@@ -12,15 +12,20 @@ sub parse_fasta_file
     {
 	chomp($_);
 
-	if ($_=~/^>(\S+)\s*(.*)/)
+	if ($_=~/^>(\S+)\s*(\S*)\s*(.*)/)
 	{
 	    $key = $1;
-	    my $desc = "";
+	    my $species = "";
 	    if (defined $2)
 	    {
-		$desc = $2;
+		$species = $2;
 	    }
-	    $seqs{$key}={id => $key, desc => $desc, seq => ""};
+	    my $desc = "";
+	    if (defined $3)
+	    {
+		$desc = $3;
+	    }
+	    $seqs{$key}={id => $key,species => $species, desc => $desc, seq => ""};
 	}
 	else
 	{
