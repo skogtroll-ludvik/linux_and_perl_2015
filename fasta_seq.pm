@@ -6,7 +6,8 @@ sub new
 {
     my $class=shift;
     my $self={ID=>$_[0],
-	      seq=>$_[1]};
+	      seq=>$_[1],
+	      desc=>$_[2]};
     bless $self,$class;
     return $self;
 }
@@ -26,5 +27,9 @@ sub seq
 }
 
 sub desc
-{}
+{
+    my $self=shift; 
+    $self->{desc}=shift if defined $_[0];
+    return $self->{desc}; 
+}
 1;

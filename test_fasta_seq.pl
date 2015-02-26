@@ -5,7 +5,7 @@ use Test::More;
 
 require_ok("fasta_seq");
 
-my $ralph=new_ok("fasta_seq",["ralph", "ralph"]);
+my $ralph=new_ok("fasta_seq",["ralph", "ralph", "ralph"]);
 
 #ID-Stuff
 
@@ -24,8 +24,8 @@ is($ralph->seq,"willi","set_seq");
 #desc-Stuff
 
 can_ok("fasta_seq","desc");
-#is($ralph->seq,"ralph","get_seq");
-#$ralph->seq("willi");
-#is($ralph->seq,"willi","set_seq");
+is($ralph->desc,"ralph","get_desc");
+$ralph->desc("willi");
+is($ralph->desc,"willi","set_desc");
 
 done_testing();
