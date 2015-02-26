@@ -48,6 +48,24 @@ foreach my $char_to_test (sort ("\n", " ", "\r", "\f", "\t", "0".."9"))
     like($@, qr/Non valid sequence/, sprintf("Sequence format test for %#04x at end", ord($char_to_test)));
 }
 
+## test if the program dies if the species contains line breaks
+# add a newline at the beginning, in the middle or at the end of the
+# species
+my $species_fails_tester=new_ok("fasta_seq",[ID=>"ralph",seq=> "ralph"]);
+my $char_to_test="\n";
+
+my $spec = $char_to_test."willi";
+eval { $species_fails_tester->species($spec) };
+like($@, qr/Non valid species/, sprintf("Species format test for %#04x at start", ord($char_to_test)));
+
+$spec = "wil".$char_to_test."li";
+eval { $species_fails_tester->species($spec) };
+like($@, qr/Non valid species/, sprintf("Species format test for %#04x in middle", ord($char_to_test)));
+
+$spec = "willi".$char_to_test;
+eval { $species_fails_tester->species($spec) };
+like($@, qr/Non valid species/, sprintf("Species format test for %#04x at end", ord($char_to_test)));
+
 #ID-Stuff
 
 can_ok("fasta_seq","ID");
