@@ -16,5 +16,7 @@ is($ralph->species,"robot","get_species");
 $ralph->species("human");
 is($ralph->species,"human","set_species");
 
+can_ok("fasta_seq", "as_fasta");
+
 
 done_testing();
