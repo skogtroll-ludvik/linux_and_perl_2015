@@ -62,7 +62,11 @@ sub seq
 sub desc
 {
     my $self=shift; 
-    $self->{desc}=shift if defined $_[0];
+    if (defined $_[0])
+    {
+	die "Non valid description" if ($_[0]=~/\n/);
+	$self->{desc}=shift;
+    }
     return $self->{desc}; 
 }
 1;
