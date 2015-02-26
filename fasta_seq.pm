@@ -18,4 +18,8 @@ sub ID
     return $self->{ID};
 }
 
+sub species
+{
+
+}
 1;
