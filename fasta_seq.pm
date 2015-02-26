@@ -44,7 +44,11 @@ sub as_fasta
 sub seq
 {
     my $self=shift;
-    $self->{seq}=shift if defined $_[0];
+    if (defined $_[0])
+    {
+	die "Non valid sequence" if ($_[0]=~/[\d\s]/);
+	$self->{seq}=shift;
+    }
     return $self->{seq};
 }
 
