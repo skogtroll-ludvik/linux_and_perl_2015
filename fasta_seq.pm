@@ -16,7 +16,11 @@ sub new
 sub ID
 {
     my $self=shift;
-    $self->{ID}=shift if defined $_[0];
+    if (defined $_[0])
+    {
+	die "Non valid ID" if ($_[0]=~/\s/);
+	$self->{ID}=shift;
+    }
     return $self->{ID};
 }
 
