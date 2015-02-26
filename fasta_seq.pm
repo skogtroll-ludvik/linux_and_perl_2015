@@ -24,4 +24,9 @@ sub species
     $self->{species}=shift if defined $_[0];
     return $self->{species};
 }
+
+sub as_fasta
+{
+    
+}
 1;
