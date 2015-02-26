@@ -17,4 +17,9 @@ sub ID
     return $self->{ID};
 }
 
+sub seq
+{
+
+}
+
 1;
