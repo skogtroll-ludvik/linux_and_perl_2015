@@ -30,7 +30,11 @@ sub ID
 sub species
 {
     my $self=shift;
-    $self->{species}=shift if defined $_[0];
+    if (defined $_[0])
+    {
+	die "Non valid species" if ($_[0]=~/\n/);
+	$self->{species}=shift;
+    }
     return $self->{species};
 }
 
