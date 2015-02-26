@@ -29,8 +29,10 @@ sub species
 sub as_fasta
 {
     my $self=shift;
-    my $fasta=">";
-    $fasta=$fasta.$self->ID." ".$self->species;
+    my$fasta=">".$self->ID;
+    if (defined $self->species){$fasta.=" ".$self->species;}
+    $fasta.=" ".$self->desc if (defined $self->desc);
+    $fasta.="\n".$self->seq."\n";
     return $fasta;
 }
 

@@ -24,7 +24,7 @@ $ralph->species("human");
 is($ralph->species,"human","set_species");
 
 can_ok("fasta_seq", "as_fasta");
-is($ralph->as_fasta,">willi human","as_fasta");
+is($ralph->as_fasta,">willi human\nralph2\n","as_fasta");
 
 #Seq-Stuff
 
