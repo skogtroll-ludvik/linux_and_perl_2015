@@ -5,7 +5,7 @@ use warnings;
 sub new
 {
     my $class=shift;
-    my $self={ID=>$_[0]};
+    my $self={ID=>$_[0],species=>$_[1]};
     bless $self,$class;
 
     return $self;
@@ -20,6 +20,7 @@ sub ID
 
 sub species
 {
-
+    my $self=shift;
+    return $self->{species};
 }
 1;

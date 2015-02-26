@@ -5,7 +5,7 @@ use Test::More;
 
 
 require_ok("fasta_seq");
-my $ralph=new_ok("fasta_seq",["ralph"]);
+my $ralph=new_ok("fasta_seq",["ralph","robot"]);
 can_ok("fasta_seq","ID");
 is($ralph->ID,"ralph","get_ID");
 $ralph->ID("willi");
