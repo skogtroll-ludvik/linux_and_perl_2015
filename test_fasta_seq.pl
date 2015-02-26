@@ -36,15 +36,15 @@ my $seq_fails_tester=new_ok("fasta_seq",[ID=>"ralph",seq=> "ralph"]);
 foreach my $char_to_test (sort ("\n", " ", "\r", "\f", "\t", "0".."9"))
 {
     my $seq = $char_to_test."willi";
-    eval { $id_fails_tester->seq($seq) };
+    eval { $seq_fails_tester->seq($seq) };
     like($@, qr/Non valid sequence/, sprintf("Sequence format test for %#04x at start", ord($char_to_test)));
 
     $seq = "wil".$char_to_test."li";
-    eval { $id_fails_tester->seq($seq) };
+    eval { $seq_fails_tester->seq($seq) };
     like($@, qr/Non valid sequence/, sprintf("Sequence format test for %#04x in middle", ord($char_to_test)));
 
     $seq = "willi".$char_to_test;
-    eval { $id_fails_tester->seq($seq) };
+    eval { $seq_fails_tester->seq($seq) };
     like($@, qr/Non valid sequence/, sprintf("Sequence format test for %#04x at end", ord($char_to_test)));
 }
 
