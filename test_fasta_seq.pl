@@ -6,9 +6,9 @@ use Test::More;
 
 require_ok("fasta_seq");
 
-my $ralph=new_ok("fasta_seq",[ID=>"ralph",seq=> "ralph2"]);
-my $hubert=new_ok("fasta_seq",[ID=>"ralph",seq=>"ralph2",desc=>"ralph3"]);
-my $norbert=new_ok("fasta_seq",[ID=>"norbert",species=>"robot",seq=>"ralph2"]);
+my $ralph=new_ok("fasta_seq",[ID=>"ralph",seq=> "ralph"]);
+my $hubert=new_ok("fasta_seq",[ID=>"ralph",seq=>"ralph",desc=>"ralph3"]);
+my $norbert=new_ok("fasta_seq",[ID=>"norbert",species=>"robot",seq=>"ralph"]);
 
 #ID-Stuff
 
@@ -24,12 +24,12 @@ $ralph->species("human");
 is($ralph->species,"human","set_species");
 
 can_ok("fasta_seq", "as_fasta");
-is($ralph->as_fasta,">willi human\nralph2\n","as_fasta");
+is($ralph->as_fasta,">willi human\nralph\n","as_fasta");
 
 #Seq-Stuff
 
 can_ok("fasta_seq","seq");
-is($ralph->seq,"ralph2","get_seq");
+is($ralph->seq,"ralph","get_seq");
 $ralph->seq("willi");
 is($ralph->seq,"willi","set_seq");
 
