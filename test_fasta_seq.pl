@@ -10,6 +10,25 @@ my $ralph=new_ok("fasta_seq",[ID=>"ralph",seq=> "ralph"]);
 my $hubert=new_ok("fasta_seq",[ID=>"ralph",seq=>"ralph",desc=>"ralph3"]);
 my $norbert=new_ok("fasta_seq",[ID=>"norbert",species=>"robot",seq=>"ralph"]);
 
+## test if the program dies if the ID contains white characters
+# add each white character at the beginning, in the middle or at the
+# end of the ID
+my $id_fails_tester=new_ok("fasta_seq",[ID=>"ralph",seq=> "ralph"]);
+foreach my $white_to_test (sort ("\n", " ", "\r", "\f", "\t"))
+{
+    my $id = $white_to_test."willi";
+    eval { $id_fails_tester->ID($id) };
+    like($@, qr/Non valid ID/, sprintf("ID format test for %#04x at start", ord($white_to_test)));
+
+    $id = "wil".$white_to_test."li";
+    eval { $id_fails_tester->ID($id) };
+    like($@, qr/Non valid ID/, sprintf("ID format test for %#04x in middle", ord($white_to_test)));
+
+    $id = "willi".$white_to_test;
+    eval { $id_fails_tester->ID($id) };
+    like($@, qr/Non valid ID/, sprintf("ID format test for %#04x at end", ord($white_to_test)));
+}
+
 #ID-Stuff
 
 can_ok("fasta_seq","ID");
