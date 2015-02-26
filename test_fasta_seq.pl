@@ -12,6 +12,6 @@ $ralph->ID("willi");
 is($ralph->ID,"willi","set_ID");
 
 can_ok("fasta_seq", "species");
-
+is($ralph->species,"robot","get_species");
 
 done_testing();
