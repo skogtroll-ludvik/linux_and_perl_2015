@@ -21,6 +21,7 @@ sub ID
 sub species
 {
     my $self=shift;
+    $self->{species}=shift if defined $_[0];
     return $self->{species};
 }
 1;
