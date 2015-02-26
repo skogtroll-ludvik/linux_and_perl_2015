@@ -5,9 +5,10 @@ use warnings;
 sub new
 {
     my $class=shift;
-    my $self={ID=>$_[0],species=>$_[1]};
+    my %param=@_;
+    my $self={ID=>$param{ID},species=>$param{species},
+	      seq=>$param{seq},desc=>$param{desc}};
     bless $self,$class;
-
     return $self;
 }
 
@@ -31,5 +32,19 @@ sub as_fasta
     my $fasta=">";
     $fasta=$fasta.$self->ID." ".$self->species;
     return $fasta;
+}
+
+sub seq
+{
+    my $self=shift;
+    $self->{seq}=shift if defined $_[0];
+    return $self->{seq};
+}
+
+sub desc
+{
+    my $self=shift; 
+    $self->{desc}=shift if defined $_[0];
+    return $self->{desc}; 
 }
 1;
