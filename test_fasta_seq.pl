@@ -66,6 +66,24 @@ $spec = "willi".$char_to_test;
 eval { $species_fails_tester->species($spec) };
 like($@, qr/Non valid species/, sprintf("Species format test for %#04x at end", ord($char_to_test)));
 
+## test if the program dies if the species contains line breaks
+# add a newline at the beginning, in the middle or at the end of the
+# description
+my $description_fails_tester=new_ok("fasta_seq",[ID=>"ralph",seq=> "ralph"]);
+$char_to_test="\n";
+
+my $desc = $char_to_test."willi";
+eval { $description_fails_tester->desc($desc) };
+like($@, qr/Non valid description/, sprintf("Description format test for %#04x at start", ord($char_to_test)));
+
+$desc = "wil".$char_to_test."li";
+eval { $description_fails_tester->desc($desc) };
+like($@, qr/Non valid description/, sprintf("Description format test for %#04x in middle", ord($char_to_test)));
+
+$desc = "willi".$char_to_test;
+eval { $description_fails_tester->desc($desc) };
+like($@, qr/Non valid description/, sprintf("Description format test for %#04x at end", ord($char_to_test)));
+
 #ID-Stuff
 
 can_ok("fasta_seq","ID");
