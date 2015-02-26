@@ -21,4 +21,11 @@ is($ralph->seq,"ralph","get_seq");
 $ralph->seq("willi");
 is($ralph->seq,"willi","set_seq");
 
+#desc-Stuff
+
+can_ok("fasta_seq","desc");
+#is($ralph->seq,"ralph","get_seq");
+#$ralph->seq("willi");
+#is($ralph->seq,"willi","set_seq");
+
 done_testing();

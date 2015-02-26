@@ -25,4 +25,6 @@ sub seq
     return $self->{seq};
 }
 
+sub desc
+{}
 1;
