@@ -62,7 +62,8 @@ sub parse
 	}
 	else
 	{
-	    $seqs[-1]->seq($seqs[-1]->seq.$_);
+	    my $seq_known_so_far=$seqs[-1]->seq.$_;
+	    $seqs[-1]->seq($seq_known_so_far);
 	    #$seqs{$key}{seq}=$seqs{$key}{seq}.$_;
 	}
     }
