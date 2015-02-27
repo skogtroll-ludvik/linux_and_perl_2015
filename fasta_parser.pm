@@ -21,5 +21,7 @@ sub new
     return $self;
 }
 
+sub filename
+{}
 
 1;
