@@ -2,7 +2,7 @@ package fasta_seq;
 use strict;
 use warnings;
 
-use overload '""'=>"as_fasta";
+use overload '""' => "as_fasta", "." => "concat";
 
 sub new
 {
@@ -71,4 +71,16 @@ sub desc
     }
     return $self->{desc}; 
 }
+
+sub concat
+{
+    my ($self, $other, $swap) = @_;
+    $self -> ID(($self -> ID) . "_" . ($other -> ID));
+    $self -> seq(($self -> seq) .  ($other -> seq));
+    $self -> species(((defined $self -> species) ? $self -> species : "") . "_" . ((defined $other -> species) ? $other -> species : ""));
+    $self -> desc(((defined $self -> desc) ? $self -> desc : "") . "_" . ((defined $other -> desc) ? $self -> desc : ""));
+    return $self;
+
+}
+
 1;
