@@ -22,6 +22,11 @@ sub new
 }
 
 sub filename
-{}
+{
+    my $self=shift;
+    my $filename=$_[0];
+    $self->{filename}=$filename if (defined $filename);
+    return $self->{filename};
+}
 
 1;
