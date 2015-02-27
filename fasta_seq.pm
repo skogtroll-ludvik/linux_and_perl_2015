@@ -2,6 +2,8 @@ package fasta_seq;
 use strict;
 use warnings;
 
+use overload '""'=>"as_fasta";
+
 sub new
 {
     my $class=shift;
