@@ -29,4 +29,8 @@ sub filename
     return $self->{filename};
 }
 
+sub parse
+{
+
+}
 1;
