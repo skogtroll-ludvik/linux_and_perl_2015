@@ -10,4 +10,8 @@ is($parser_obj->filename, undef, "default filename");
 $parser_obj->filename("sequences.fasta");
 is($parser_obj->filename, "sequences.fasta", "assigned_name");
 can_ok("fasta_parser","parse");
+
+$parser_obj->filename("fasta.file");
+$parser_obj->parse;
+
 done_testing();
